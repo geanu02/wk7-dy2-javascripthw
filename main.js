@@ -171,6 +171,8 @@ if (Object.keys(blank).length) {
     console.table(blank)
 }
 
+console.log(blank_arr.length)
+
 // Getting Keys as an array of an object
 
 const instructorKeys = Object.keys(instructor)
@@ -199,6 +201,12 @@ for (let k in instructor) {
 
 // .entries()
 // .enumerate() on Python
+
+for (let e of [12, 3, 4, 5]) {
+    console.log(e)
+}
+
+console.log([1,2,3,4,5].slice(-1))
 
 for (let e of [12, 3, 4, 5].entries()) {
     console.log(e)
@@ -290,3 +298,74 @@ async function apiEx() {
     await isEven(12)
     console.log(`${a} Need to data to run`)
 }
+
+function dirReduc(arr) {
+
+    const oppositeDirections = {
+        "NORTH": "SOUTH",
+        "SOUTH": "NORTH",
+        "EAST": "WEST",
+        "WEST": "EAST"
+    }
+  
+    const directionStack = []
+  
+    for (let direction of arr) {
+        if (directionStack.length !== 0) {
+          if (directionStack[directionStack.length - 1] == oppositeDirections[direction]) {
+            directionStack.pop()
+          }
+        } else {
+            directionStack.push(direction)
+        }
+    }
+    return directionStack
+}
+
+console.log(dirReduc(["NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST"]))
+
+console.log(dirReduc(["NORTH", "WEST", "SOUTH", "EAST"]))
+const oppositeDirections = {
+    "NORTH": "SOUTH",
+    "SOUTH": "NORTH",
+    "EAST": "WEST",
+    "WEST": "EAST"
+}
+
+console.log(oppositeDirections['NORTH'])
+
+function hamming (a,b) {
+    c = [...a]
+    d = [...b]
+    let count = 0
+    for (let i = 0; i < c.length; i++) {
+        if (c[i] !== d[i]) {
+            count++
+        }
+    }
+    return count
+}
+
+console.log(hamming("I like turtles","I like turkeys"))
+
+def second_symbol(s, symbol):
+    indices = []
+    for i, sym in enumerate(s):
+        if sym == symbol:
+            indices.append(i)
+    if not indices or len(indices) < 2:
+        return -1
+    else:
+        return indices[1]
+
+const secondSymbol = (s, symbol) => {
+    const i_arr = []
+    for ( let [ idx, sym ] of [...s].entries() ) {
+        if ( sym == symbol ) {
+            i_arr.push(idx)
+        }
+    }
+    return i_arr.length == 0 || i_arr.length < 2 ? -1 : i_arr[1]
+}
+
+console.log(secondSymbol('Hello world!!!','l'))

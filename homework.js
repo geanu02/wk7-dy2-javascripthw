@@ -137,6 +137,8 @@ const hwPerson = {
     }]
 }
 
+// ANSWER 2 =============================================================================================
+
 const parseFaves = fave => {
     switch (fave) {
         case "pizza":
@@ -174,6 +176,8 @@ const parseFaves = fave => {
 
 // Create a Promised based function that will check a string to determine if it's length is greater than 10. If the length is greater than 10 then resolve it and console log "Big word". If the length of the string is less than 10 then reject it and console log "Small String."
 
+// ANSWER 3 =============================================================================================
+
 const promiseFunction = str => {
     return new Promise((res, rej) => {
         if (str.length > 10) {
@@ -201,6 +205,8 @@ const promiseFunction = str => {
 // When a Player hits they can hit as long as their total is under 21
 
 // Use the randomNumber function provided below to gernerate a random number 1-12
+
+// ANSWER 5 =============================================================================================
 
 class GameMember {
     constructor() {
@@ -235,8 +241,52 @@ class Player extends GameMember {
 
 // Complete 3 Codewars problems using JavaScript, start with ones you have already solved in python.  Paste a link here to the 3 questions you completed
 
-// 1:
+// ANSWER 5 =============================================================================================
 
-// 2:
+// 1: Hamming Distance (6kyu) - https://www.codewars.com/kata/5410c0e6a0e736cf5b000e69
 
-// 3:
+const hamming = (a, b) => {
+    c = [...a]
+    d = [...b]
+    let count = 0
+    for (let i = 0; i < c.length; i++) {
+        if (c[i] !== d[i]) {
+            count++
+        }
+    }
+    return count
+}
+
+// 2: Directions Reduction (5kyu) - https://www.codewars.com/kata/550f22f4d758534c1100025a
+
+const dirReduc = arr => {
+    const oppositeDirections = {
+        "NORTH": "SOUTH",
+        "SOUTH": "NORTH",
+        "EAST": "WEST",
+        "WEST": "EAST"
+    }
+    const directionStack = []
+    for (let direction of arr) {
+        if (!directionStack.length) {
+          if (directionStack[directionStack.length - 1] == oppositeDirections[direction]) {
+            directionStack.pop()
+          }
+        } else {
+            directionStack.push(direction)
+        }
+    }
+    return directionStack
+}
+
+// 3: Find the index of the second occurrence of a letter in a string (7kyu) - https://www.codewars.com/kata/63f96036b15a210058300ca9
+
+const secondSymbol = (s, symbol) => {
+    const i_arr = []
+    for ( let [ idx, sym ] of [...s].entries() ) {
+        if ( sym == symbol ) {
+            i_arr.push(idx)
+        }
+    }
+    return i_arr.length == 0 || i_arr.length < 2 ? -1 : i_arr[1]
+}
