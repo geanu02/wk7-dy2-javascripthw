@@ -348,16 +348,6 @@ function hamming (a,b) {
 
 console.log(hamming("I like turtles","I like turkeys"))
 
-def second_symbol(s, symbol):
-    indices = []
-    for i, sym in enumerate(s):
-        if sym == symbol:
-            indices.append(i)
-    if not indices or len(indices) < 2:
-        return -1
-    else:
-        return indices[1]
-
 const secondSymbol = (s, symbol) => {
     const i_arr = []
     for ( let [ idx, sym ] of [...s].entries() ) {

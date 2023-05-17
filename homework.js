@@ -91,8 +91,6 @@ const formatObject = _arr => {
     return result
 }
 
-console.log(formatObject(shopItems))
-
 // QUESTION 2 =============================================================================================
 // Write a function that parses through the below object and displays all of their favorite food dishes as shown:
 
@@ -139,39 +137,59 @@ const hwPerson = {
 
 // ANSWER 2 =============================================================================================
 
-const parseFaves = fave => {
-    switch (fave) {
-        case "pizza":
-            console.log([ "Deep Dish", "South Side Thin Crust" ])
-            break
-        case "tacos":
-            console.log("Anything not from Taco bell")
-            break
-        case "burgers":
-            console.log("Portillos Burgers")
-            break
-        case "ice_cream":
-            console.log([ "Chocolate", "Vanilla", "Oreo" ])
-            break
-        case "shakes":
-            console.log('')
-        case "oberwise":
-            console.log("Chocolate")
-            break
-        case "dunkin":
-            console.log("Vanilla")
-            break
-        case "culvers":
-            console.log("All of them")
-            break
-        case "mcdDonalds":
-            console.log("Sham-rock-shake")
-            break
-        case "cupids_candies":
-            console.log("Chocolate Malt")
-            break
+function parseFaves(fave) {
+    for ( let key in fave ) {
+        
+        if (Array.isArray(fave[key])) {
+            console.log(`${key} contains:`)
+            for ( const item of fave[key] ) {
+                console.log(`\t${item}`)
+            }
+        } else if (typeof fave[key] == "string") {
+            console.log(`${key} contains:`)
+            console.log(`\t${fave[key]}`)
+        } else {
+            console.log(`${key} contains:`)
+            parseFaves(fave[key])
+        }
     }
 }
+
+parseFaves(hwPerson)
+
+// const parseFaves = fave => {
+//     switch (fave) {
+//         case "pizza":
+//             console.log([ "Deep Dish", "South Side Thin Crust" ])
+//             break
+//         case "tacos":
+//             console.log("Anything not from Taco bell")
+//             break
+//         case "burgers":
+//             console.log("Portillos Burgers")
+//             break
+//         case "ice_cream":
+//             console.log([ "Chocolate", "Vanilla", "Oreo" ])
+//             break
+//         case "shakes":
+//             console.log('')
+//         case "oberwise":
+//             console.log("Chocolate")
+//             break
+//         case "dunkin":
+//             console.log("Vanilla")
+//             break
+//         case "culvers":
+//             console.log("All of them")
+//             break
+//         case "mcdDonalds":
+//             console.log("Sham-rock-shake")
+//             break
+//         case "cupids_candies":
+//             console.log("Chocolate Malt")
+//             break
+//     }
+// }
 // QUESTION 3 =============================================================================================
 
 // Create a Promised based function that will check a string to determine if it's length is greater than 10. If the length is greater than 10 then resolve it and console log "Big word". If the length of the string is less than 10 then reject it and console log "Small String."
