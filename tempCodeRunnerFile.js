@@ -12,22 +12,22 @@ const hwPerson = {
     }]
 }
 
-// ANSWER 2 =============================================================================================
-
 function parseFaves(fave) {
     for ( let key in fave ) {
-        
         if (Array.isArray(fave[key])) {
             console.log(`${key} contains:`)
-            for ( const item of fave[key] ) {
-                console.log(`\t${item}`)
+            for ( let obj of fave[key] ) {
+                if ( typeof obj === "object" ) {
+                    parseFaves(obj)
+                } else {
+                console.log(`\t${obj}`)
+                }
             }
-        } else if (typeof fave[key] == "string") {
-            console.log(`${key} contains:`)
-            console.log(`\t${fave[key]}`)
+        } else if ( typeof fave[key] === "object" ) {
+            parseFaves(obj)
         } else {
             console.log(`${key} contains:`)
-            parseFaves(fave[key])
+            console.log(`\t${fave[key]}`)
         }
     }
 }
